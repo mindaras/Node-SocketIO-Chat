@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Chat app</title>
+</head>
+<body>
+
+  <div class="app">
+    <h1 class="app__title">Chat App</h1>
+    <div class="chat-wrapper">
+      <div class="overlay" id="overlay"></div>
+      <div class="users" id="users">
+        <div class="users__back" id="usersBack"></div>
+        <h2 class="users__title">People</h2>
+        <ul class="users-list" id="userList">
+
+        </ul>
+      </div>
+      <div class="chat">
+        <div class="messages-wrapper">
+          <div class="users-button" id="usersButton"></div>
+          <div class="messages" id="messages"></div>
+        </div>
+        <form class="message-form" id="messageForm">
+          <input name="message" type="text" class="message-form__input" placeholder="Type your message here" autofocus autocomplete="off">
+          <div class="message-form__buttons">
+            <button type="button" class="message-form__location" id="location"></button>
+            <input type="submit" class="message-form__submit" value="Send">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script id="messageTemplate" type="text/template">
+    <p class="messages__message"><span class="messages__message-text"><span class="messages__message-author">{{from}}</span>: {{text}}<span class="messages__message-time">{{createdAt}}</span></span></p>
+  </script>
+
+  <script id="locationMessageTemplate" type="text/template">
+    <p class="messages__message"><span class="messages__message-text"><span class="messages__message-author">{{from}}</span>: <a href="{{url}}" target="_blank">My current location</a><span class="messages__message-time">{{createdAt}}</span></span></p>
+  </script>
+
+  <script id="userTemplate" type="text/template">
+    <li class="users-list__item">{{displayName}}</li>
+  </script>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/libs/moment.js"></script>
+  <script src="/js/libs/mustache.min.js"></script>
+  <script src="/js/chat.js"></script>
+</body>
+</html>
